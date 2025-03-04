@@ -2,9 +2,10 @@
 /* ------  Strukturen ----- */
 
 /* 	 
-	NULL wird nicht mehr zugelassen
-    DEFAULT-Werte eintragen
+	Doppelte DS werden nicht mehr zugelassen
+    UNIQUE
 */
+
 
 /* DB boo löschen, falls vorhanden*/
 DROP DATABASE IF EXISTS boo;
@@ -21,7 +22,8 @@ DROP TABLE IF EXISTS test;
 /* Tab. test anlegen, falls noch nicht vorhanden*/
 CREATE TABLE IF NOT EXISTS test
 (
-	name VARCHAR(20)NOT NULL DEFAULT "TBA",
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(20) UNIQUE NOT NULL DEFAULT "TBA",
 	age INT NOT NULL DEFAULT 0
 );
 
