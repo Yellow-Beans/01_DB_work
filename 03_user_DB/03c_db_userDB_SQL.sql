@@ -8,23 +8,26 @@ CREATE TABLE IF NOT EXISTS boo.users
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     userName VARCHAR(20) NOT NULL UNIQUE,
-    userPwd VARCHAR(40) NOT NULL,
+    userPwd VARCHAR(65) NOT NULL,
     familyName VARCHAR(20) NOT NULL,
     firstName VARCHAR(20) NOT NULL
 );
 
 /* Struktur */
-DESCRIBE boo.users;
+-- DESCRIBE boo.users;
 
 /* Daten */
 INSERT INTO boo.users (userName, userPwd, familyName, firstName) 
-VALUES ('johndoe123', 'somePwd', 'Doe', 'John');
-
-INSERT INTO boo.users (userName, userPwd, familyName, firstName) 
-VALUES ('emilybrown22', '1', 'Brown', 'Emily');
-
-INSERT INTO boo.users (userName, userPwd, familyName, firstName) 
-VALUES ('michaelsmith7', '2', 'Smith', 'Michael');
+VALUES ('johndoe123', sha1('somePwd'), 'Doe', 'John'),
+-- ('emilybrown22', sha2('123', 256), 'Brown', 'Emily'),
+('michaelsmith7', SHA1('2'), 'Smith', 'Michael');
 
 /* Inhalte : Ergebnistabelle */
-SELECT * FROM boo.users;
+-- SELECT * FROM boo.users;
+
+SELECT
+firstName AS "Vorname", 
+familyName As "Name",
+userPwd AS pwd
+FROM boo.users
+;
